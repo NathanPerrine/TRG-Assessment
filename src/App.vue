@@ -3,43 +3,61 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <h1>You Don't Know<br /> What You Don't Know</h1>
-      </div>
-    </section>
-
-    <!-- Main Content Section -->
-    <section class="main-content">
-      <div class="left-column">
-        <img src="/Rowmark-R.svg" alt="Rowmark Logo" class="logo" />
-        <h2>About Us</h2>
-        <p>Some informational text about Rowmark or the company here.</p>
-      </div>
-
-      <div class="right-column">
-        <div class="news-card">
-          <div class="news-header">
-            <h2>LATEST NEWS</h2>
-          </div>
-          <ul class="news-feed">
-            <li v-for="(item, index) in newsItems" :key="index">
-              <h3>{{ item.title }}</h3>
-              <p>{{ item.content }}</p>
-              <button class="read-more">Read More</button>
-            </li>
-          </ul>
+      <div class="container">
+        <div class="hero-content">
+          <h1>
+            You Don't Know<br />
+            What You Don't Know
+          </h1>
         </div>
       </div>
     </section>
 
+    <!-- Main Content Section -->
+    <div class="container">
+      <section class="main-content">
+        <div class="left-column">
+          <div class="logo"></div>
+          <h2 class="project-header">
+            Coding Test <span class="project-version">v</span>2.0.1
+          </h2>
+          <p class="project-subtitle">The difference is in the details</p>
+          <p class="project-body">
+            Rowmark always has been and always will be a company built around
+            people. From our highly skilled production, quality and engineering
+            teams to our talented sales, marketing, finance and customer support
+            personnel,
+          </p>
+          <p class="project-body project-body-bold">
+            Rowmark’s people are what make the difference.
+          </p>
+        </div>
+
+        <div class="right-column">
+          <div class="news-card">
+            <div class="news-header">
+              <h2>LATEST NEWS</h2>
+            </div>
+            <ul class="news-feed">
+              <li v-for="(item, index) in newsItems" :key="index">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.content }}</p>
+                <button class="read-more">Read More</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
     <!-- Footer -->
-    <footer class="footer">
-      <p>© 2025 Rowmark</p>
-    </footer>
+    <Footer />
   </div>
 </template>
 
 <script setup lang="ts">
+import Footer from "./components/Footer.vue";
+
 const newsItems = [
   {
     title: "News Title",
@@ -115,26 +133,72 @@ const newsItems = [
 /* Main Content */
 .main-content {
   display: flex;
-  flex: 1;
-  padding: 4rem 5%;
-  background: #f4f4f4;
-  gap: 2rem;
-  position: relative;
+  justify-content: space-between;
+  padding-left: 3rem;
 
   .left-column {
-    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    position: relative;
+    top: -108px;
+    max-width: 600px;
+    padding: 0 4rem;
 
     .logo {
-      width: 120px;
-      margin-bottom: 1rem;
+      height: 209px;
+      width: 200px;
+      background: transparent url("/Rowmark-R.svg") center center no-repeat;
+      background-size: contain;
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .project-header {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 36px;
+      line-height: 44px;
+      color: #003475;
+      margin: 0;
+      text-align: left;
+      height: 38px;
+
+      .project-version {
+        font-weight: 400;
+        font-size: 24px;
+        margin-left: 0.5rem;
+      }
+    }
+
+    .project-subtitle {
+      font-style: italic;
+      font-weight: 300;
+      font-size: 25px;
+      line-height: 30px;
+      color: #5a5a5a;
+      margin: 0;
+      text-align: left;
+    }
+
+    .project-body {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+      color: #707070;
+      text-align: left;
+      margin: 0;
+      margin-top: 1rem;
+    }
+
+    .project-body-bold {
+      font-weight: bold;
+      margin-top: 1rem;
     }
   }
 
   .right-column {
-    flex: 1;
     position: relative;
 
     .news-card {
@@ -143,8 +207,8 @@ const newsItems = [
       border-radius: 0px 13px 13px 13px;
       overflow: hidden;
       position: absolute;
-      top: -580px;
-      right: 50;
+      top: -480px;
+      right: 0;
       width: 536px;
       z-index: 5;
 
@@ -156,7 +220,6 @@ const newsItems = [
         align-items: center;
         border: 4px solid #ffffff;
         border-radius: 0px 15px 15px 15px;
-        text-align: left;
 
         h2 {
           font-style: italic;
@@ -212,18 +275,11 @@ const newsItems = [
             line-height: 19px;
             cursor: pointer;
             text-align: left;
+            text-transform: uppercase;
           }
         }
       }
     }
   }
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 1rem;
-  background: #003399;
-  color: white;
 }
 </style>
