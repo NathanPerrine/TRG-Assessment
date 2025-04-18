@@ -3,7 +3,7 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-overlay"></div>
-      <div class="container">
+      <div class="page-container">
         <div class="hero-content">
           <h1>
             You Don't Know<br />
@@ -14,7 +14,7 @@
     </section>
 
     <!-- Main Content Section -->
-    <div class="container">
+    <div class="page-container">
       <section class="main-content">
         <div class="left-column">
           <div class="logo"></div>
@@ -90,7 +90,6 @@ const newsItems = [
   overflow-x: hidden;
 }
 
-/* Hero */
 .hero {
   position: relative;
   background: url("/rowmark_buildingfront.jpg") center/cover no-repeat;
@@ -130,7 +129,6 @@ const newsItems = [
   }
 }
 
-/* Main Content */
 .main-content {
   display: flex;
   justify-content: space-between;
@@ -165,7 +163,7 @@ const newsItems = [
       height: 38px;
 
       .project-version {
-        font-weight: 400;
+        font-weight: 300;
         font-size: 24px;
         margin-left: 0.5rem;
       }

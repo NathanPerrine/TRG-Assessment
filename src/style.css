@@ -9,7 +9,7 @@ button {
   font-family: inherit;
 }
 
-.container {
+.page-container {
   max-width: 1500px;
   margin: 0 auto;
   width: 100%;
