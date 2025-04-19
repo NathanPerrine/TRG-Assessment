@@ -1,5 +1,5 @@
 <template>
-  <footer class="page-footer">
+  <footer class="footer" aria-label="Site Footer">
     <div class="page-container">
       <p>Copyright © 2010 - 2022 Rowmark, LLC. - All rights reserved</p>
     </div>
@@ -7,7 +7,7 @@
 </template>
 
 <style scoped lang="scss">
-.page-footer {
+.footer {
   height: 78px;
   background: #464646;
   display: flex;
@@ -21,5 +21,15 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  p {
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer {
+    padding: 0 8px;
+  }
 }
 </style>
