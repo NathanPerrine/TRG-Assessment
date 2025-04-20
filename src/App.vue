@@ -2,7 +2,15 @@
 import Footer from "./components/Footer.vue";
 import { ref, onMounted } from "vue";
 
-const newsItems = ref([]);
+interface NewsItem {
+  id: number;
+  title: string;
+  content: string;
+  dateCreated: string;
+  slug: string;
+}
+
+const newsItems = ref<NewsItem[]>([]);
 const loading = ref(true);
 
 onMounted(async () => {
