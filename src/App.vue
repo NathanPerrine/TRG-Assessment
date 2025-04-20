@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Footer from "./components/Footer.vue";
 import { ref, onMounted } from "vue";
+import client from "./sanityClient";
 
 interface NewsItem {
   id: number;
@@ -15,13 +16,17 @@ const loading = ref(true);
 
 onMounted(async () => {
   try {
-    const response = await fetch("https://d249-96-28-41-233.ngrok-free.app/api/news");
-    const data = await response.json();
-    newsItems.value = data.data;
-  } catch (err) {
-    console.error("Error fetching news: ", err);
-  } finally {
+    const query = `*[_type == "newsArticle"] | order(date desc) {
+      title,
+      content,
+      "slug": slug.current,
+      date
+    }`;
+    const data = await client.fetch(query);
+    newsItems.value = data;
     loading.value = false;
+  } catch (err) {
+    console.error("Error fetching news:", err);
   }
 });
 </script>
