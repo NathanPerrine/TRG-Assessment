@@ -64,7 +64,7 @@ onMounted(async () => {
                 <h3>{{ item.title }}</h3>
                 <p>{{ item.content }}</p>
                 <a
-                  href="#"
+                  :href="`/news/${item.slug}`"
                   class="read-more"
                   :aria-label="`Read more about ${item.title}`"
                   >Read More</a
