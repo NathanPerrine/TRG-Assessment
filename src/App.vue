@@ -1,28 +1,21 @@
 <script setup lang="ts">
 import Footer from "./components/Footer.vue";
+import { ref, onMounted } from "vue";
 
-const newsItems = [
-  {
-    title: "News Title",
-    content:
-      "Rowmark LLC introduces The Naturals product line, an authentic, nature-inspired, textured engravable sheet product. The Naturals not only look like they came right from the outdoors, but they feel like it too. And just like their real-life counterparts,…",
-  },
-  {
-    title: "News Title",
-    content:
-      "Rowmark LLC introduces The Naturals product line, an authentic, nature-inspired, textured engravable sheet product. The Naturals not only look like they came right from the outdoors, but they feel like it too. And just like their real-life counterparts,…",
-  },
-  {
-    title: "News Title",
-    content:
-      "Rowmark LLC introduces The Naturals product line, an authentic, nature-inspired, textured engravable sheet product. The Naturals not only look like they came right from the outdoors, but they feel like it too. And just like their real-life counterparts,…",
-  },
-  {
-    title: "News Title",
-    content:
-      "Rowmark LLC introduces The Naturals product line, an authentic, nature-inspired, textured engravable sheet product. The Naturals not only look like they came right from the outdoors, but they feel like it too. And just like their real-life counterparts,…",
-  },
-];
+const newsItems = ref([]);
+const loading = ref(true);
+
+onMounted(async () => {
+  try {
+    const response = await fetch("http://rowmark-craft.ddev.site/api/news");
+    const data = await response.json();
+    newsItems.value = data.data;
+  } catch (err) {
+    console.error("Error fetching news: ", err);
+  } finally {
+    loading.value = false;
+  }
+});
 </script>
 
 <template>
@@ -65,7 +58,8 @@ const newsItems = [
             <div class="news-header">
               <h2>LATEST NEWS</h2>
             </div>
-            <ul class="news-feed">
+            <div v-if="loading" class="news-loading">Loading news...</div>
+            <ul v-else class="news-feed">
               <li v-for="(item, index) in newsItems" :key="index">
                 <h3>{{ item.title }}</h3>
                 <p>{{ item.content }}</p>
@@ -229,6 +223,7 @@ $color-button-blue: #075a94;
       right: 0;
       margin-right: 15px;
       width: 536px;
+      min-height: 700px;
       z-index: 5;
 
       .news-header {
@@ -248,6 +243,15 @@ $color-button-blue: #075a94;
           color: $color-white;
           text-shadow: 0px 3px 6px $color-shadow;
         }
+      }
+
+      .news-loading {
+        padding: 2rem;
+        text-align: center;
+        font-style: italic;
+        color: $color-dark-gray;
+        border-radius: 0 0 13px 13px;
+        font-size: 1.2rem;
       }
 
       .news-feed {
