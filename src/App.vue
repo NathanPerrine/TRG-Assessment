@@ -15,7 +15,7 @@ const loading = ref(true);
 
 onMounted(async () => {
   try {
-    const response = await fetch("http://rowmark-craft.ddev.site/api/news");
+    const response = await fetch("https://d249-96-28-41-233.ngrok-free.app/api/news");
     const data = await response.json();
     newsItems.value = data.data;
   } catch (err) {
