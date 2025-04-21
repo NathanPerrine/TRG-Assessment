@@ -135,7 +135,7 @@ $color-button-blue: #075a94;
 
   .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 20;
     max-width: 50%;
     padding: 0 1rem;
     text-align: center;
@@ -398,9 +398,14 @@ $color-button-blue: #075a94;
 
     .left-column {
       max-width: 100%;
-      top: -92px;
+      top: -62px;
       padding: 0 1rem;
       margin-bottom: 0;
+
+      .logo {
+        height: 120px;
+        width: 120px;
+      }
 
       .project-header {
         font-size: 28px;
@@ -475,7 +480,7 @@ $color-button-blue: #075a94;
     }
 
     .left-column {
-      top: -94px;
+      top: -63px;
       padding: 0;
       align-items: center;
       text-align: center;
@@ -557,7 +562,7 @@ $color-button-blue: #075a94;
 
   .main-content {
     .left-column {
-      top: -95px;
+      top: -65px;
 
       .project-header {
         font-size: 20px;
